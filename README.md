@@ -1,40 +1,56 @@
-# Keylogger 📜 README
+Keylogger 📜
+Overview 📚
+This repository provides a lightweight client-server keylogger architecture designed for educational purposes and authorized security auditing. It allows for real-time keystroke transmission from a target machine to a centralized monitoring server.
 
-## Overview 📚
+Warning: 🔒 Unauthorized use of keyloggers is illegal and unethical. Use this software only on systems where you have explicit, written permission.
 
-This repository contains a simple keylogger that consists of a server and a client, allowing you to monitor and record keyboard input on a target machine. It's essential to use this software responsibly and only on systems you have explicit permission to monitor. Unauthorized use of keyloggers is illegal and unethical. 🔒
+Features 🌟
+Dual-Logging: Keystrokes are stored locally in key_strokes.txt and transmitted via sockets.
 
-## Features 🌟
+Real-Time Monitoring: Live console output on the server-side as keys are pressed.
 
-- The server 🖥️ listens for incoming connections and logs the received keystrokes.
-- The client 💻 runs on the target machine and sends keystrokes to the server.
-- Keystrokes are logged to a file 📝 on the client machine and transmitted to the server in real-time.
-- The client and server communicate over a network 🌐, allowing remote monitoring.
+Network Capable: Supports remote monitoring over local networks or VPNs.
 
-## Usage 🚀
+Minimal Footprint: Designed to run with basic Python dependencies.
 
-1. **Server Setup**:
-   - Run the server script on a machine where you want to collect keystroke data.
-   - The server listens for incoming connections on the specified IP address and port.
+Prerequisites 🛠️
+Ensure the following are installed before running the scripts:
 
-2. **Client Setup**:
-   - Replace `'SERVER_IP'` in the client script with the IP address of your server.
-   - Run the client script on the target machine where you want to monitor keystrokes.
-   - The client logs keystrokes to a file (key_strokes.txt) and sends them to the server.
+Python 3.x
 
-3. **Monitoring**:
-   - The server will display received keystrokes in its console.
-   - Keystrokes are also logged to a file on the client machine (key_strokes.txt).
+pynput library (Install via: pip install pynput)
 
-## Important Notes ⚠️
+Usage 🚀
+1. Server Setup
+Run the server script on your monitoring machine to listen for incoming data:
 
-- This keylogger should be used responsibly and legally. Unauthorized use is a violation of privacy and may be illegal.
-- Respect local laws and obtain appropriate permissions before using this software.
-- The code is provided for educational purposes only, and the authors are not responsible for any misuse.
+Bash
+python server.py
+The server will initialize and wait for the client connection on the designated port.
 
-## License 📝
+2. Client Configuration
+Open client.py and update the connection details:
 
-This software is distributed under the following license:
+Python
+SERVER_IP = '127.0.0.1'  # Replace with your Server's IP address
+PORT = 8080              # Ensure this matches the Server's port
+Run the client on the target machine:
 
-**MIT License** 📄
+Bash
+python client.py
+3. Monitoring
+The Server console will display real-time keystroke data.
 
+The Client directory will generate a key_strokes.txt file containing the session log.
+
+Ethical Usage & Legal Disclaimer ⚠️
+This tool is provided strictly for educational and research purposes. The author assumes no liability for misuse or damage caused by this software.
+
+Always respect privacy laws.
+
+Obtain appropriate permissions before deployment.
+
+Do not use for malicious data collection.
+
+License 📝
+This project is licensed under the MIT License.
